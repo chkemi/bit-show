@@ -74,10 +74,10 @@ class LandingPage extends Component {
                         <input id="search" type="search" placeholder='Search show' value={this.state.searchValue} onChange={this.changeSearchValue} />
                     </div>
                 </form>
-                <h2 className='center'>Popular Shows</h2>
                 <ul>
                     {this.renderSearchedShows()}
                 </ul>
+                <h2 className='center'>Popular Shows</h2>
                 <div className="row">
                     {this.renderShows()}
                 </div>
