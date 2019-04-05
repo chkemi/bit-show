@@ -40,6 +40,14 @@ class LandingPage extends Component {
         })
     }
 
+    renderSearchedShows() {
+        return this.state.searchedShows.map((show) => {
+            return (
+                <li>{show.name}</li>
+            )
+        })
+    }
+
     changeSearchValue(e) {
         this.setState({
             searchValue: e.target.value
@@ -62,10 +70,12 @@ class LandingPage extends Component {
                     </div>
                 </form>
                 <h2 className='center'>Popular Shows</h2>
+                <ul>
+                    {this.renderSearchedShows()}
+                </ul>
                 <div className="row">
                     {this.renderShows()}
                 </div>
-
             </div>
         );
     }
