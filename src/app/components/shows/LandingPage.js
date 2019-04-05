@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchShows, fetchSearchedShows } from '../../services/ShowServices';
+import { Link } from 'react-router-dom';
 
 class LandingPage extends Component {
     constructor(props) {
@@ -25,17 +26,19 @@ class LandingPage extends Component {
     renderShows() {
         return this.state.shows.map((show) => {
             return (
-                <div key={show.id} className="col s4">
-                    <div className="card">
-                        <div className="card-image">
-                            <img src={show.imageMedium} alt='Show' />
-                        </div>
-                        <div className="card-content center">
-                            <h5><b>{show.name}</b></h5>
-                            <p>Rating: <b>{show.rating}</b></p>
+                <Link key={show.id} to={`/show/${show.id}`}>
+                    <div className="col s4">
+                        <div className="card">
+                            <div className="card-image">
+                                <img src={show.imageMedium} alt='Show' />
+                            </div>
+                            <div className="card-content center">
+                                <h5><b>{show.name}</b></h5>
+                                <p>Rating: <b>{show.rating}</b></p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Link>
             )
         })
     }
@@ -43,7 +46,9 @@ class LandingPage extends Component {
     renderSearchedShows() {
         return this.state.searchedShows.map((show) => {
             return (
-                <li>{show.name}</li>
+                <Link key={show.id} to={`/show/${show.id}`}>
+                    <li>{show.name}</li>
+                </Link>
             )
         })
     }

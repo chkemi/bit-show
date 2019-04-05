@@ -1,4 +1,5 @@
 import Show from "../models/Show";
+import ShowInfo from "../models/ShowInfo";
 
 const fetchShows = () => {
     return fetch('http://api.tvmaze.com/shows')
@@ -14,7 +15,14 @@ const fetchSearchedShows = (value) => {
             .map(show => new Show(show.show.id, show.show.name, show.show.image, show.show.rating.average)))
 }
 
+const fetchSingleShow = (id) => {
+    return fetch(`http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=cast`)
+        .then(response => response.json())
+        .then(infoArr => new ShowInfo(infoArr.id, infoArr.name, infoArr.image.original, infoArr.summary, infoArr._embedded))
+}
+
 export {
     fetchShows,
     fetchSearchedShows,
+    fetchSingleShow,
 }

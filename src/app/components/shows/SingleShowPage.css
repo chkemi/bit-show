@@ -1,0 +1,11 @@
+img {
+    width: 100%;
+}
+
+li {
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: square !important;
+}
